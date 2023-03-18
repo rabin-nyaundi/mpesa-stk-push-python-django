@@ -1,0 +1,7 @@
+PAYMENT_STATUS = [
+    ("INITIATING", "INITIATING"),
+    ("PENDING", "PENDING"),
+    ("CANCELED", "CANCELED"),
+    ("SUCCESS", "SUCCESS"),
+    ("FAILED", "FAILED"),
+]

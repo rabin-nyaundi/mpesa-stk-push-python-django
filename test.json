@@ -1,0 +1,16 @@
+{
+  "MerchantRequestID": "42505-20782442-1",
+  "CheckoutRequestID": "ws_CO_14032023102138587700304978",
+  "ResultCode": 0,
+  "ResultDesc": "The service request is processed successfully.",
+  "CallbackMetadata": {
+    "Item": [
+      { "Name": "Amount", "Value": 1.0 },
+      { "Name": "MpesaReceiptNumber", "Value": "RCE7QSRA5V" },
+      { "Name": "TransactionDate", "Value": 20230314102156 },
+      { "Name": "PhoneNumber", "Value": 254700304978 }
+    ]
+  }
+}
+
+

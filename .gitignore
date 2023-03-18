@@ -128,3 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 mpesa-stk-push/.env
+payments/__pycache__/
+mpesa-stk-push/__pycache__/
+mpesa/__pycache__/

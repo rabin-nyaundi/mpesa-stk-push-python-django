@@ -1,79 +1,76 @@
 # MPESA STK PUSH - PYTHON DJANGO
+## Project Setup
 
-The project has an admin dashboard that you can view all the payments, their statuses whether successfull of failed.
+MPESA stk-push intergration with dashboard to enable admin/supersuer to view all payments made. 
 
-To Set up the project clone or fork the repository
-```bash 
-git clone https://github.com/mpesa-stk-push-python-django
+The project uses Tailwindcss for styling the web pages, 
 
-```
-Set up the environment variables.
+1. To Set up the project clone or fork the repository
+    ```sh 
+    git clone <repo>
+    ```
+2. Set up the environment variables.
 
-Inside the project directory locate the ```settings.py``` file.
+    - Inside the project directory locate the ```settings.py``` file.
 
-In the same directory, create an env file ```.env```.
-```bash 
-.env
+    - In the same directory as `settings.py`, create an env file ```.env```.
+    ```sh 
+    .env
 
+    SECRET_KEY=<secret_key> # your secret key
+    MPESA_PASSKEY=<Mpesa passkey>  # obtained from Mpesa daraja Portal
+    MPESA_BUSINESS_NUMBER=12345 # Business Number provided by MPESA DARAJA API for testing
+    MPESA_SHORTCODE=174379  #Shortcode also provided by MPESA DARAJA API for testing
+    CONSUMER_KEY=<consumer_key> # consumer key provided by MPESA DARAJA API for testing
+    CONSUMER_SECRET=<consumer_secret>    #consumer secret also provided by MPESA DARAJA API for testing
+    MPESA_API_ENDPOINT=https://sandbox.safaricom.co.ke/ 
+    MPESA_CALLBACK_URL=<callback_url> # for localhost you can use ngrok
+    ```
 
-SECRET_KEY=<secret_key> # your secret key
+3. Create virtual environment
+    ```sh 
+    python3 -m venv <name_of_your_virtualenvirnment>
+    ```
 
-MPESA_PASSKEY=<Mpesa passkey>  # obtained from Mpesa daraja Portal
+4. Install dependencies.
 
-MPESA_BUSINESS_NUMBER=12345 # Business Number provided by MPESA DARAJA API for testing
+    - To install the dependencies, navigate to project root directory and open terminal.
+    
+    ```sh
+    pip install -r requirements.txt
+    ```
 
-MPESA_SHORTCODE=174379  #Shortcode also provided by MPESA DARAJA API for testing
+5. Run the Migrations.
 
-CONSUMER_KEY=<consumer_key> # consumer key provided by MPESA DARAJA API for testing
+   - You can set your own database. For this project we are using ```sqlite```
+    ```sh 
+    python3 manage.py migrate
+    ```
 
-CONSUMER_SECRET=<consumer_secret>    #consumer secret also provided by MPESA DARAJA API for testing
+6. The finnaly run the server.
 
-MPESA_API_ENDPOINT=https://sandbox.safaricom.co.ke/ 
+    ```sh
+    npm run tailwind-watch
+    
+    python3 manage.py runserver
+    ```
 
-MPESA_CALLBACK_URL=<callback_url> # for localhost testing you cMPESA DARAJA API for testingan set ngrok
+7. Create a super user or admin user with email and password.
 
-```
-Create virtual environment
-```bash 
-python3 -m venv <name_of_your_virtualenvirnment>
-```
+   - Admin user can view all the payments when logged in to the application.
 
-Install dependencies.
+    ```sh
+    python3 manage.py createsuperuer
+    ```
 
-To install the dependencies, navigate to project root directory and open terminal.
-```bash
-pip install -r requirements.txt
-```
+8. Visit ```http://localhost:8000/``` to view on the browser.
+    ```sh
+    http://localhost:8000/
+    ```
 
-Run the Migrations.
+   - Register a user on regiter user page.
 
-You can set your own database. For this project we are using ```sqlite```
-```bash 
-python3 manage.py migrate
-```
+   - Login then make payment form your safaricom phone.
 
-The finnaly run the server.
-
-```bash
-python3 manage.py runserver
-```
-
-Create a super user or admin user with email and password.
-
-Admin user can view all the payments when logged in to the application.
-
-```bash
-python3 manage.py createsuperuer
-```
-
-Visit ```http://localhost:8000/``` to view on the browser.
-```bash
-http://localhost:8000/
-```
-
-Register a user on regiter user page.
-
-Login then make payment form your safaricom phone.
-
-Logout and login again as a ```superuser``` or ```admin``` to view the payment list.
+   - Logout and login again as a ```superuser``` or ```admin``` to view the payment list.
 

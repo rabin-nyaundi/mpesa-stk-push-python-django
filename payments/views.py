@@ -59,8 +59,8 @@ def view_login_user(request):
         user = authenticate(request, username=email_address, password=password)
         if user:
             login(request, user)
-            request.session["user"] = user.user_profile.phone_number
-            print(user.user_profile.phone_number)
+            # request.session["user"] = user.user_profile.phone_number
+            # print(user.user_profile.phone_number)
             return redirect("initiate-payment")
         else:
             messages.error(request, "Invalid credeantials provided")
@@ -88,7 +88,7 @@ def view_update_user_phone_number(request):
             return redirect("initiate-payment")
         else:
             messages.error(request, "Failed!")
-            return HttpResponse("done")
+            return redirect("initiate-payment")
     return render(request, "../templates/auth/edit-profile.html")
 
 
@@ -98,7 +98,7 @@ def initiate_payment(request):
         phone_number = request.POST.get("phone_number")
         amount = request.POST["amount"]
 
-        callback_url = f"{MPESA_CALLBACK_URL}/mpesa/stk-results/"
+        callback_url = f"{MPESA_CALLBACK_URL}/stk-results/"
 
         mpesa = MpesaAPI()
         response = mpesa.initiate_stk_push(phone_number, amount, callback_url)
